@@ -1,0 +1,110 @@
+project_name: hitman
+
+before:
+  hooks:
+    - go mod tidy
+    - go generate ./...
+
+builds:
+  - env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - windows
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+    ignore:
+      - goos: windows
+        goarch: arm64
+    binary: hitman
+    ldflags:
+      - -s -w -X main.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.Date}}
+
+archives:
+  - format: tar.gz
+    name_template: >-
+      {{ .ProjectName }}_
+      {{- title .Os }}_
+      {{- if eq .Arch "amd64" }}x86_64
+      {{- else if eq .Arch "386" }}i386
+      {{- else }}{{ .Arch }}{{ end }}
+      {{- if .Arm }}v{{ .Arm }}{{ end }}
+    format_overrides:
+    - goos: windows
+      format: zip
+    files:
+      - README.md
+      - LICENSE
+      - CONTRIBUTING.md
+
+checksum:
+  name_template: 'checksums.txt'
+
+snapshot:
+  name_template: "{{ incpatch .Version }}-next"
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
+      - '^ci:'
+      - '^chore:'
+      - '^style:'
+      - '^refactor:'
+
+release:
+  github:
+    owner: yourusername
+    name: hitman
+  draft: false
+  prerelease: auto
+  name_template: "HITMAN v{{.Version}} - Elite Edition"
+  header: |
+    ## 🎯 HITMAN v{{.Version}} - Elite Process Terminator
+    
+    > *"Precision. Style. Elimination."*
+    
+    ### What's New
+  footer: |
+    ### Installation
+    
+    #### Homebrew (macOS/Linux)
+    ```bash
+    brew install yourusername/tap/hitman
+    ```
+    
+    #### Direct Download
+    Download the appropriate binary for your platform from the assets below.
+    
+    #### Go Install
+    ```bash
+    go install github.com/yourusername/hitman@v{{.Version}}
+    ```
+    
+    ### Verification
+    All binaries are signed and can be verified using the provided checksums.
+    
+    ---
+    
+    **Full Changelog**: https://github.com/yourusername/hitman/compare/{{.PreviousTag}}...{{.Tag}}
+
+brews:
+  - name: hitman
+    homepage: https://github.com/yourusername/hitman
+    description: "Elite process terminator with style - kill processes on any port with smooth animations"
+    license: MIT
+    repository:
+      owner: yourusername
+      name: homebrew-tap
+    commit_author:
+      name: goreleaserbot
+      email: bot@goreleaser.com
+    folder: Formula
+    install: |
+      bin.install "hitman"
+    test: |
+      system "#{bin}/hitman --version"
