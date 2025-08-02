@@ -1,4 +1,4 @@
-module hitman
+module github.com/ktappdev/hitman
 
 go 1.21
 

@@ -43,7 +43,7 @@ Enhancement suggestions are tracked as GitHub issues. When creating an enhanceme
 ## Development Setup
 
 1. Fork the repo
-2. Clone your fork: `git clone https://github.com/yourusername/hitman.git`
+2. Clone your fork: `git clone https://github.com/ktappdev/hitman.git`
 3. Create a feature branch: `git checkout -b feature/amazing-feature`
 4. Install dependencies: `go mod tidy`
 5. Make your changes

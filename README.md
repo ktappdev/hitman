@@ -26,7 +26,7 @@ A dark, stylish terminal-based CLI tool with advanced reconnaissance capabilitie
 
 ### Quick Install from Source
 ```bash
-git clone https://github.com/yourusername/hitman.git
+git clone https://github.com/ktappdev/hitman.git
 cd hitman
 go mod tidy
 go build -o hitman
@@ -35,16 +35,16 @@ go build -o hitman
 ### System-wide Installation via Go
 ```bash
 # Install directly from GitHub (requires Go 1.21+)
-go install github.com/yourusername/hitman@latest
+go install github.com/ktappdev/hitman@latest
 
 # Or install from a specific version/tag
-go install github.com/yourusername/hitman@v2.0.0
+go install github.com/ktappdev/hitman@v2.0.0
 ```
 
 ### Manual Build
 ```bash
 # Clone and build manually
-git clone https://github.com/yourusername/hitman.git
+git clone https://github.com/ktappdev/hitman.git
 cd hitman
 go mod download
 go build -ldflags="-s -w" -o hitman .
@@ -55,7 +55,7 @@ sudo mv hitman /usr/local/bin/
 ```
 
 ### Binary Release
-Download pre-compiled binaries from [Releases](https://github.com/yourusername/hitman/releases)
+Download pre-compiled binaries from [Releases](https://github.com/ktappdev/hitman/releases)
 
 ## 📖 Mission Manual
 

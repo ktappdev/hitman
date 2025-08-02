@@ -58,7 +58,7 @@ changelog:
 
 release:
   github:
-    owner: yourusername
+    owner: ktappdev
     name: hitman
   draft: false
   prerelease: auto
@@ -82,7 +82,7 @@ release:
     
     #### Go Install
     ```bash
-    go install github.com/yourusername/hitman@v{{.Version}}
+    go install github.com/ktappdev/hitman@v{{.Version}}
     ```
     
     ### Verification
@@ -90,15 +90,15 @@ release:
     
     ---
     
-    **Full Changelog**: https://github.com/yourusername/hitman/compare/{{.PreviousTag}}...{{.Tag}}
+    **Full Changelog**: https://github.com/ktappdev/hitman/compare/{{.PreviousTag}}...{{.Tag}}
 
 brews:
   - name: hitman
-    homepage: https://github.com/yourusername/hitman
+    homepage: https://github.com/ktappdev/hitman
     description: "Elite process terminator with style - kill processes on any port with smooth animations"
     license: MIT
     repository:
-      owner: yourusername
+      owner: ktappdev
       name: homebrew-tap
     commit_author:
       name: goreleaserbot
