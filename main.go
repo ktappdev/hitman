@@ -104,6 +104,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 					m.killed = true
 				}
 				m.stage = 2
+				return m, tea.Quit
 			}
 			return m, tea.Tick(time.Millisecond*80, func(t time.Time) tea.Msg {
 				return tickMsg(t)
